@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Footer, GlobalCTA } from "@/components/Footer";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -68,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <Header />
           <main className="flex-1">{children}</main>
+          <GlobalCTA />
           <Footer />
         </ThemeProvider>
       </body>

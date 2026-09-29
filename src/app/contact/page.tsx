@@ -1,18 +1,68 @@
 "use client";
-"use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
 
-export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+type FormState = "idle" | "submitting" | "success" | "error";
 
-  const handleSubmit = (e: React.FormEvent) => {
+interface FormErrors {
+  name?: string;
+  email?: string;
+  company?: string;
+  projectType?: string;
+  budget?: string;
+  timeline?: string;
+  description?: string;
+}
+
+export default function ContactPage() {
+  const [formState, setFormState] = useState<FormState>("idle");
+  const [errors, setErrors] = useState<FormErrors>({});
+
+
+  const validate = (formData: FormData): FormErrors => {
+    const errors: FormErrors = {};
+    const name = formData.get("name")?.toString().trim();
+    const email = formData.get("email")?.toString().trim();
+    const company = formData.get("company")?.toString().trim();
+    const projectType = formData.get("projectType")?.toString().trim();
+    const description = formData.get("description")?.toString().trim();
+
+    if (!name || name.length < 2) {
+      errors.name = "Please enter your name";
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Please enter a valid email address";
+    }
+    if (!company || company.length < 2) {
+      errors.company = "Please enter your company name";
+    }
+    if (!projectType) {
+      errors.projectType = "Please select a project type";
+    }
+    if (!description || description.length < 20) {
+      errors.description = "Please provide at least 20 characters";
+    }
+    return errors;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setErrors({});
+    const formData = new FormData(e.currentTarget);
+    const validationErrors = validate(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setFormState("submitting");
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setFormState("success");
   };
 
   return (
@@ -25,16 +75,22 @@ export default function ContactPage() {
                 Contact
               </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary mb-6">
-                Start a project
+                Have something
+                <br />
+                worth building?
               </h1>
               <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-lg">
-                Tell us about what you are building. We will respond within two business
-                days with initial thoughts and next steps.
+                Tell us what you&rsquo;re working on. We&rsquo;ll help turn the idea into
+                a clear path forward.
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <Mail className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
                   <div>
                     <div className="text-sm font-medium text-text-primary mb-1">Email</div>
                     <a
@@ -46,7 +102,11 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Phone className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
                   <div>
                     <div className="text-sm font-medium text-text-primary mb-1">Phone</div>
                     <a
@@ -58,7 +118,12 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <circle cx="12" cy="11" r="1.5" fill="currentColor" />
+                    </svg>
+                  </div>
                   <div>
                     <div className="text-sm font-medium text-text-primary mb-1">Offices</div>
                     <p className="text-sm text-text-secondary">
@@ -72,116 +137,237 @@ export default function ContactPage() {
             </div>
 
             <div>
-              {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-10 bg-surface rounded-2xl border border-border text-center"
-                >
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-text-primary mb-3">
-                    Thank you
-                  </h3>
-                  <p className="text-text-secondary">
-                    We have received your message and will get back to you within two
-                    business days.
-                  </p>
-                </motion.div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="p-8 lg:p-10 bg-surface rounded-2xl border border-border space-y-6"
-                >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <AnimatePresence mode="wait">
+                {formState === "success" ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="p-10 bg-surface rounded-2xl border border-border text-center"
+                  >
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
+                      <CheckCircle2 className="w-8 h-8 text-accent" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-text-primary mb-3">
+                      Thank you
+                    </h3>
+                    <p className="text-text-secondary">
+                      We have received your message and will get back to you within two
+                      business days.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                    onSubmit={handleSubmit}
+                    noValidate
+                    className="p-8 lg:p-10 bg-surface rounded-2xl border border-border space-y-5"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block text-xs font-medium tracking-wide uppercase text-text-primary mb-2"
+                        >
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          required
+                          aria-invalid={!!errors.name}
+                          aria-describedby={errors.name ? "name-error" : undefined}
+                          className={`w-full px-4 py-3 bg-background border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 ${
+                            errors.name ? "border-red-500/60" : "border-border"
+                          }`}
+                          placeholder="Jane Doe"
+                        />
+                        {errors.name && (
+                          <p id="name-error" className="mt-1.5 text-xs text-red-500">
+                            {errors.name}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-xs font-medium tracking-wide uppercase text-text-primary mb-2"
+                        >
+                          Work email
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          required
+                          aria-invalid={!!errors.email}
+                          aria-describedby={errors.email ? "email-error" : undefined}
+                          className={`w-full px-4 py-3 bg-background border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 ${
+                            errors.email ? "border-red-500/60" : "border-border"
+                          }`}
+                          placeholder="jane@company.com"
+                        />
+                        {errors.email && (
+                          <p id="email-error" className="mt-1.5 text-xs text-red-500">
+                            {errors.email}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
                     <div>
                       <label
-                        htmlFor="firstName"
-                        className="block text-sm font-medium text-text-primary mb-2"
+                        htmlFor="company"
+                        className="block text-xs font-medium tracking-wide uppercase text-text-primary mb-2"
                       >
-                        First name
+                        Company
                       </label>
                       <input
                         type="text"
-                        id="firstName"
+                        id="company"
+                        name="company"
                         required
-                        className="w-full px-4 py-3 bg-background border border-border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                        placeholder="Jane"
+                        aria-invalid={!!errors.company}
+                        aria-describedby={errors.company ? "company-error" : undefined}
+                        className={`w-full px-4 py-3 bg-background border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 ${
+                          errors.company ? "border-red-500/60" : "border-border"
+                        }`}
+                        placeholder="Acme Inc."
                       />
+                      {errors.company && (
+                        <p id="company-error" className="mt-1.5 text-xs text-red-500">
+                          {errors.company}
+                        </p>
+                      )}
                     </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label
+                          htmlFor="projectType"
+                          className="block text-xs font-medium tracking-wide uppercase text-text-primary mb-2"
+                        >
+                          Project type
+                        </label>
+                        <select
+                          id="projectType"
+                          name="projectType"
+                          required
+                          aria-invalid={!!errors.projectType}
+                          aria-describedby={errors.projectType ? "projectType-error" : undefined}
+                          className={`w-full px-4 py-3 bg-background border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 appearance-none ${
+                            errors.projectType ? "border-red-500/60" : "border-border"
+                          }`}
+                        >
+                          <option value="">Select a type</option>
+                          <option value="Software Engineering">Software Engineering</option>
+                          <option value="AI & Data">AI & Data</option>
+                          <option value="Digital Products">Digital Products</option>
+                          <option value="Web & Digital Experience">Web & Digital Experience</option>
+                          <option value="Brand & Creative">Brand & Creative</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        {errors.projectType && (
+                          <p id="projectType-error" className="mt-1.5 text-xs text-red-500">
+                            {errors.projectType}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="budget"
+                          className="block text-xs font-medium tracking-wide uppercase text-text-primary mb-2"
+                        >
+                          Budget range
+                        </label>
+                        <select
+                          id="budget"
+                          name="budget"
+                          className="w-full px-4 py-3 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 appearance-none"
+                        >
+                          <option value="">Select a range</option>
+                          <option value="< $50k">Less than $50k</option>
+                          <option value="$50k - $100k">$50k - $100k</option>
+                          <option value="$100k - $250k">$100k - $250k</option>
+                          <option value="$250k+">$250k+</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <div>
                       <label
-                        htmlFor="lastName"
-                        className="block text-sm font-medium text-text-primary mb-2"
+                        htmlFor="timeline"
+                        className="block text-xs font-medium tracking-wide uppercase text-text-primary mb-2"
                       >
-                        Last name
+                        Timeline
                       </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        required
-                        className="w-full px-4 py-3 bg-background border border-border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                        placeholder="Doe"
-                      />
+                      <select
+                        id="timeline"
+                        name="timeline"
+                        className="w-full px-4 py-3 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 appearance-none"
+                      >
+                        <option value="">Select a timeline</option>
+                        <option value="< 3 months">Less than 3 months</option>
+                        <option value="3-6 months">3-6 months</option>
+                        <option value="6-12 months">6-12 months</option>
+                        <option value="12+ months">12+ months</option>
+                      </select>
                     </div>
-                  </div>
 
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-text-primary mb-2"
+                    <div>
+                      <label
+                        htmlFor="description"
+                        className="block text-xs font-medium tracking-wide uppercase text-text-primary mb-2"
+                      >
+                        Project description
+                      </label>
+                      <textarea
+                        id="description"
+                        name="description"
+                        rows={5}
+                        required
+                        aria-invalid={!!errors.description}
+                        aria-describedby={errors.description ? "description-error" : undefined}
+                        className={`w-full px-4 py-3 bg-background border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 resize-none ${
+                          errors.description ? "border-red-500/60" : "border-border"
+                        }`}
+                        placeholder="Describe your project, goals, and timeline..."
+                      />
+                      {errors.description && (
+                        <p id="description-error" className="mt-1.5 text-xs text-red-500">
+                          {errors.description}
+                        </p>
+                      )}
+                    </div>
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full"
+                      disabled={formState === "submitting"}
                     >
-                      Work email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                      placeholder="jane@company.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium text-text-primary mb-2"
-                    >
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                      placeholder="Acme Inc."
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-text-primary mb-2"
-                    >
-                      Tell us about your project
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={5}
-                      required
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Describe your project, timeline, and goals..."
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full">
-                    Send Message
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </form>
-              )}
+                      {formState === "submitting" ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Start a Project
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </>
+                      )}
+                    </Button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </Section>

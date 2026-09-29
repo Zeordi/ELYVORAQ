@@ -7,24 +7,24 @@ import { Section } from "@/components/Section";
 
 const values = [
   {
-    title: "Precision",
+    title: "Engineering",
     description:
-      "We believe in doing things right, not just fast. Every line of code, every design decision, every strategy is deliberate.",
+      "Technology is not an afterthought. Every decision is grounded in sound architecture, tested rigorously, and built to perform.",
   },
   {
-    title: "Intelligence",
+    title: "Design",
     description:
-      "We solve hard problems. Our team combines deep technical expertise with strategic thinking to deliver meaningful outcomes.",
+      "Great engineering deserves great design. We believe form and function are inseparable — one cannot succeed without the other.",
   },
   {
-    title: "Partnership",
+    title: "Innovation",
     description:
-      "We do not just build and leave. We embed ourselves in our clients' missions, becoming true long-term collaborators.",
+      "We invest in R&D through Elyvoraq Labs, ensuring our work benefits from the latest advances in AI, automation, and emerging technology.",
   },
   {
-    title: "Craft",
+    title: "Reliability",
     description:
-      "Quality is not negotiable. From architecture to animation, we hold ourselves to a standard that reflects serious engineering.",
+      "We build systems that last. Our architectures are designed for scale, resilience, and long-term maintainability.",
   },
 ];
 
@@ -32,6 +32,7 @@ const teamStats = [
   { value: "40+", label: "Engineers, designers, and strategists" },
   { value: "12", label: "Nationalities represented" },
   { value: "15+", label: "Years of combined leadership experience" },
+  { value: "50+", label: "Projects delivered" },
 ];
 
 export default function AboutPage() {
@@ -44,19 +45,20 @@ export default function AboutPage() {
               About
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary mb-6">
-              We are Elyvoraq Technologies
+              Technology should move
+              <br />
+              people forward
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed max-w-2xl">
-              A software engineering and digital innovation company founded on the belief
-              that technology should serve people and organizations with clarity, precision,
-              and purpose.
+              Elyvoraq Technologies combines software engineering, design, and emerging
+              technology to build digital solutions for organizations ready to move forward.
             </p>
           </div>
         </Section>
 
         <section className="mb-24">
           <Section>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
               {teamStats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
