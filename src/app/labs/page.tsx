@@ -8,42 +8,43 @@ import { AnimatedSignal } from "@/components/Signal";
 
 const researchAreas = [
   {
-    title: "Applied AI Research",
+    title: "AI",
     description:
-      "Exploring the practical application of machine learning, generative models, and autonomous systems to solve real-world problems.",
-    href: "#",
-    status: "Active",
+      "Applied machine learning, generative models, and autonomous systems research.",
+    status: "ACTIVE",
+    meta: "ELYVORAQLABS / AI / 0x1F4A",
   },
   {
-    title: "Experimental Interfaces",
+    title: "Automation",
     description:
-      "Investigating next-generation interaction paradigms beyond conventional screen-based interfaces.",
-    href: "#",
-    status: "Active",
+      "Intelligent orchestration and autonomous operation systems for complex environments.",
+    status: "ACTIVE",
+    meta: "ELYVORAQLABS / AUTO / 0x2B7C",
   },
   {
-    title: "Distributed Systems",
+    title: "Emerging Technology",
     description:
-      "Researching resilient, performant, and secure architectures for global-scale applications.",
-    href: "#",
-    status: "Active",
+      "Next-generation interfaces, protocols, and computing paradigms.",
+    status: "EXPLORATORY",
+    meta: "ELYVORAQLABS / EMERG / 0x3D9E",
   },
   {
-    title: "Computational Design",
+    title: "Experimental Products",
     description:
-      "Using algorithms and computation to generate, optimize, and refine design systems and creative outputs.",
-    href: "#",
-    status: "Exploratory",
+      "Proprietary tools built to solve problems we encounter in client work.",
+    status: "BETA",
+    meta: "ELYVORAQLABS / PROD / 0x4A1B",
   },
 ];
 
-const products = [
+const experiments = [
   {
     title: "Nexus Orchestrator",
     description:
       "A proprietary cloud orchestration framework for managing distributed workloads with unprecedented efficiency.",
     status: "In Development",
     href: "#",
+    meta: "ELYVORAQLABS / NEXUS / 0x7F2C",
   },
   {
     title: "Signal Analytics",
@@ -51,6 +52,7 @@ const products = [
       "An AI-powered analytics engine that surfaces meaningful patterns in complex datasets.",
     status: "Beta",
     href: "#",
+    meta: "ELYVORAQLABS / SIGNAL / 0x8E3D",
   },
   {
     title: "Lattice Design System",
@@ -58,6 +60,7 @@ const products = [
       "A comprehensive, token-driven design system built for scale and consistency across digital products.",
     status: "Internal",
     href: "#",
+    meta: "ELYVORAQLABS / LATTICE / 0x9A4F",
   },
 ];
 
@@ -67,13 +70,13 @@ export default function LabsPage() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <Section>
           <div className="max-w-3xl mb-20">
-            <span className="text-xs font-medium tracking-widest uppercase text-accent mb-4 block">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-4 block">
               Elyvoraq Labs
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary mb-6">
-              Where we explore what
+              Where we experiment
               <br />
-              comes next
+              with what&rsquo;s next
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed max-w-2xl">
               Our research and development division operates at the frontier of technology.
@@ -101,22 +104,26 @@ export default function LabsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.7, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="p-8 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500"
+                  className="group relative p-8 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-text-secondary uppercase tracking-widest">
-                      Research
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-mono text-text-secondary tracking-[0.2em] uppercase">
+                      {area.title}
                     </span>
-                    <span className="px-2.5 py-1 text-xs font-mono text-accent bg-accent/10 rounded-full border border-accent/20">
+                    <span className="px-2.5 py-1 text-[10px] font-mono text-accent bg-accent/10 rounded-full border border-accent/20 tracking-wider">
                       {area.status}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-text-primary mb-3">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-text-secondary leading-relaxed">
+                  <p className="text-sm text-text-secondary leading-relaxed mb-6">
                     {area.description}
                   </p>
+                  <div className="flex items-center gap-4 text-[10px] font-mono text-text-secondary tracking-wider">
+                    <span>{area.meta.split(" / ")[0]}</span>
+                    <span className="w-1 h-1 rounded-full bg-accent" />
+                    <span>{area.meta.split(" / ")[1]}</span>
+                    <span className="w-1 h-1 rounded-full bg-accent" />
+                    <span>{area.meta.split(" / ")[2]}</span>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -134,7 +141,7 @@ export default function LabsPage() {
               </p>
             </div>
             <div className="space-y-6">
-              {products.map((product, i) => (
+              {experiments.map((product, i) => (
                 <motion.div
                   key={product.title}
                   initial={{ opacity: 0, y: 30 }}
@@ -153,9 +160,16 @@ export default function LabsPage() {
                       <h3 className="text-xl font-semibold text-text-primary mb-2 group-hover:text-accent transition-colors duration-300">
                         {product.title}
                       </h3>
-                      <p className="text-sm text-text-secondary leading-relaxed">
+                      <p className="text-sm text-text-secondary leading-relaxed mb-4">
                         {product.description}
                       </p>
+                      <div className="flex items-center gap-4 text-[10px] font-mono text-text-secondary tracking-wider">
+                        <span>{product.meta.split(" / ")[0]}</span>
+                        <span className="w-1 h-1 rounded-full bg-accent" />
+                        <span>{product.meta.split(" / ")[1]}</span>
+                        <span className="w-1 h-1 rounded-full bg-accent" />
+                        <span>{product.meta.split(" / ")[2]}</span>
+                      </div>
                     </div>
                     <Link
                       href={product.href}
