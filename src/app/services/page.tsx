@@ -10,27 +10,34 @@ const services = [
   {
     title: "Software Engineering",
     description:
-      "Scalable, resilient systems built with precision. From cloud-native platforms to enterprise architectures that perform at scale.",
+      "Scalable, resilient systems built with precision. From cloud-native platforms to enterprise architectures.",
     href: "/services/software-engineering",
-    features: [
-      "Cloud-native architecture",
-      "Enterprise systems",
+    capabilities: [
+      "Full-stack development",
+      "Frontend engineering",
+      "Backend systems",
       "API design & integration",
-      "Performance optimization",
-      "Legacy modernization",
+      "Database architecture",
+      "Enterprise systems",
+      "Cloud infrastructure",
+      "System architecture",
+      "Maintenance & optimization",
     ],
   },
   {
     title: "AI & Data",
     description:
-      "Intelligent systems that learn, adapt, and transform how organizations operate and make decisions.",
+      "Intelligent systems that learn, adapt, and transform how organizations operate and decide.",
     href: "/services/ai-data",
-    features: [
-      "Machine learning pipelines",
-      "Predictive analytics",
-      "Natural language processing",
-      "Computer vision",
-      "Data engineering",
+    capabilities: [
+      "AI applications",
+      "Machine learning",
+      "Automation systems",
+      "Intelligent automation",
+      "Data processing",
+      "Dashboards & analytics",
+      "Model evaluation",
+      "AI integration",
     ],
   },
   {
@@ -38,12 +45,15 @@ const services = [
     description:
       "End-to-end product design and development from concept to launch, engineered for real-world use.",
     href: "/services/digital-products",
-    features: [
-      "Product strategy",
-      "UX/UI design",
+    capabilities: [
+      "SaaS platforms",
       "MVP development",
-      "Growth iteration",
-      "Product analytics",
+      "Web platforms",
+      "Business applications",
+      "Customer portals",
+      "Internal systems",
+      "Product strategy",
+      "Product engineering",
     ],
   },
   {
@@ -51,12 +61,15 @@ const services = [
     description:
       "Performant, accessible, and beautifully engineered web platforms that serve global audiences.",
     href: "/services/web-digital",
-    features: [
-      "Custom web platforms",
-      "Headless CMS",
-      "E-commerce systems",
+    capabilities: [
+      "Websites & platforms",
+      "UX design",
+      "UI engineering",
       "Performance optimization",
-      "Accessibility-first design",
+      "Responsive experiences",
+      "Headless CMS",
+      "E-commerce",
+      "Accessibility-first build",
     ],
   },
   {
@@ -64,9 +77,12 @@ const services = [
     description:
       "Identity systems and creative direction grounded in strategy, crafted for long-term impact.",
     href: "/services/brand-creative",
-    features: [
-      "Brand strategy",
+    capabilities: [
       "Visual identity",
+      "Brand systems",
+      "UI design",
+      "Digital design",
+      "Marketing visuals",
       "Design systems",
       "Motion design",
       "Creative direction",
@@ -84,13 +100,13 @@ export default function ServicesPage() {
               Services
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary mb-6">
-              Capabilities across
+              Technology built around
               <br />
-              the full digital stack
+              real problems
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed max-w-2xl">
-              From infrastructure to interface, we bring the depth and range to handle the
-              most demanding technical challenges.
+              Five core disciplines, one engineering-first approach. Each service is a
+              deep capability, not a packaged solution.
             </p>
           </div>
         </Section>
@@ -105,33 +121,36 @@ export default function ServicesPage() {
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
               className="group relative p-8 lg:p-10 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/5"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                <div className="lg:col-span-4">
+                  <span className="text-[10px] font-mono text-text-secondary tracking-[0.2em] uppercase block mb-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <h2 className="text-2xl lg:text-3xl font-semibold text-text-primary mb-4 group-hover:text-accent transition-colors duration-300">
                     {service.title}
                   </h2>
                   <p className="text-base text-text-secondary leading-relaxed mb-6">
                     {service.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {service.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className="px-3 py-1.5 text-xs font-mono text-text-secondary bg-secondary rounded-full border border-border"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex items-center">
                   <Link
                     href={service.href}
                     className="inline-flex items-center gap-2 text-sm font-medium text-accent group-hover:gap-3 transition-all duration-300"
                   >
-                    Learn more
+                    Explore service
                     <ChevronRight className="w-4 h-4" />
                   </Link>
+                </div>
+                <div className="lg:col-span-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border rounded-xl overflow-hidden">
+                    {service.capabilities.map((cap) => (
+                      <div
+                        key={cap}
+                        className="p-4 bg-surface text-sm text-text-secondary hover:text-text-primary hover:bg-secondary transition-colors duration-300"
+                      >
+                        {cap}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
