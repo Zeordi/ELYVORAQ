@@ -1172,4 +1172,40 @@ Partner branding should only be used according to the applicable partnership or 
 
 License
 
-Unless otherwise specified, this reposit
+Unless otherwise specified, this repository and its contents are proprietary to Elyvoraq Technologies.
+
+The source code, design assets, brand materials and proprietary content may not be copied, redistributed, modified for commercial use, or republished without permission.
+
+If an individual repository component is released under a separate open-source license, that license takes precedence for that component.
+
+---
+
+Contact
+
+ELYVORAQ
+
+Elyvoraq Technologies
+
+Engineering Digital Possibilities.
+
+Software Engineering & Digital Innovation
+
+Based in Ethiopia · Serving Local & International Clients
+
+---
+
+Core Capabilities
+
+Software Engineering · AI & Data · Digital Products · Web & Digital Experience · Brand & Creative
+
+Innovation
+
+Elyvoraq Labs
+
+Partnership Network
+
+TATATECH Technology LLC
+
+---
+
+© 2026 Elyvoraq Technologies. All rights reserved.
