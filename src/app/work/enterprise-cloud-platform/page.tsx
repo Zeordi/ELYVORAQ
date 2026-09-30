@@ -8,7 +8,7 @@ const caseStudy = {
   title: "Enterprise Cloud Platform",
   category: "Software Engineering",
   year: "2025",
-  client: "Fortune 500 Retailer",
+  client: "Global Enterprise Client",
   duration: "18 months",
   team: "12 engineers",
   challenge:
@@ -16,13 +16,13 @@ const caseStudy = {
   approach:
     "We conducted a full architecture audit, identified critical risk areas, and designed a phased migration strategy. Rather than a risky big-bang rewrite, we incrementally extracted bounded contexts into microservices.",
   design:
-    "We designed a unified API gateway, service mesh topology, and observability framework. The architecture prioritized resilience, enabling independent deployment and failure isolation across 40+ services.",
+    "We designed a unified API gateway, service mesh topology, and observability framework. The architecture prioritized resilience, enabling independent deployment and failure isolation across services.",
   engineering:
     "We implemented the platform in Go and TypeScript, with Kubernetes for orchestration, gRPC for inter-service communication, and a custom event bus for async workflows. CI/CD pipelines enforced quality gates at every stage.",
   solution:
-    "A modern cloud-native platform with 99.99% uptime, processing 2M+ daily operations across 12 regions. Deployment frequency increased from monthly to multiple times per day.",
+    "A modern cloud-native platform with high availability, processing significant daily operations across regions. Deployment frequency increased from monthly to multiple times per day.",
   outcome:
-    "The platform now handles 2M+ daily operations with 99.99% uptime. Infrastructure costs decreased by 40%, and the client can launch new features in days instead of months.",
+    "The platform now handles significant daily operations with high availability. Infrastructure costs decreased notably, and the client can launch new features in days instead of months.",
   technology: ["Go", "TypeScript", "Kubernetes", "AWS", "gRPC", "PostgreSQL", "Terraform", "Prometheus", "Grafana"],
 };
 

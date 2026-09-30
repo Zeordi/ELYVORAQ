@@ -22,7 +22,6 @@ export default function ContactPage() {
   const [formState, setFormState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<FormErrors>({});
 
-
   const validate = (formData: FormData): FormErrors => {
     const errors: FormErrors = {};
     const name = formData.get("name")?.toString().trim();
@@ -104,32 +103,14 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                      <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-text-primary mb-1">Phone</div>
-                    <a
-                      href="tel:+15551234567"
-                      className="text-sm text-text-secondary hover:text-accent transition-colors duration-300"
-                    >
-                      +1 (555) 123-4567
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                       <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <circle cx="12" cy="11" r="1.5" fill="currentColor" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-text-primary mb-1">Offices</div>
+                    <div className="text-sm font-medium text-text-primary mb-1">Location</div>
                     <p className="text-sm text-text-secondary">
-                      San Francisco, CA
-                      <br />
-                      London, UK
+                      Based in Ethiopia. Serving local and international clients.
                     </p>
                   </div>
                 </div>

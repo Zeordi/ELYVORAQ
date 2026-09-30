@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
+import { Signal } from "@/components/Signal";
 
 const categories = [
   "All",
@@ -21,10 +22,10 @@ const projects = [
     category: "Software Engineering",
     year: "2025",
     description:
-      "Multi-tenant cloud orchestration platform processing 2M+ daily operations with 99.99% uptime.",
+      "Multi-tenant cloud orchestration platform with high availability and distributed workload processing.",
     href: "/work/enterprise-cloud-platform",
     tags: ["Cloud", "Go", "Kubernetes", "AWS"],
-    outcome: "99.99% uptime, 2M+ daily operations, 40% cost reduction",
+    outcome: "High availability, distributed processing, improved operational efficiency",
     featured: true,
   },
   {
@@ -32,10 +33,10 @@ const projects = [
     category: "AI & Data",
     year: "2024",
     description:
-      "Real-time predictive analytics platform reducing decision latency by 70% for a Fortune 500 retailer.",
+      "Real-time predictive analytics platform for a global retailer.",
     href: "#",
     tags: ["Python", "ML", "Spark", "GCP"],
-    outcome: "70% faster decisions, 30% inventory reduction",
+    outcome: "Faster decision-making, reduced operational latency",
     featured: true,
   },
   {
@@ -43,10 +44,10 @@ const projects = [
     category: "Digital Products",
     year: "2024",
     description:
-      "Core banking and payment infrastructure serving 15M+ users across 40 countries.",
+      "Core banking and payment infrastructure for a large user base across multiple countries.",
     href: "#",
     tags: ["TypeScript", "Microservices", "PostgreSQL"],
-    outcome: "15M+ users, 40 countries, sub-second settlement",
+    outcome: "Scalable settlement, multi-region reliability",
     featured: false,
   },
   {
@@ -54,10 +55,10 @@ const projects = [
     category: "Web & Digital Experience",
     year: "2024",
     description:
-      "A headless content platform powering 200+ brand properties with sub-second load times.",
+      "A headless content platform powering multiple brand properties with strong performance.",
     href: "#",
     tags: ["Next.js", "Node", "Vercel", "Contentful"],
-    outcome: "200+ properties, 90+ Lighthouse score",
+    outcome: "Strong performance, broad content coverage",
     featured: false,
   },
   {
@@ -65,10 +66,10 @@ const projects = [
     category: "AI & Data",
     year: "2023",
     description:
-      "Clinical decision support system reducing diagnostic time by 45% across 12 hospitals.",
+      "Clinical decision support system deployed across multiple healthcare facilities.",
     href: "#",
     tags: ["AI", "FHIR", "React", "Python"],
-    outcome: "45% faster diagnosis, 12 hospitals",
+    outcome: "Reduced diagnostic time, broad deployment",
     featured: false,
   },
   {
@@ -76,10 +77,10 @@ const projects = [
     category: "Brand & Creative",
     year: "2023",
     description:
-      "Complete brand architecture and design system for a $2B technology company entering new markets.",
+      "Complete brand architecture and design system for a technology company expanding into new markets.",
     href: "#",
     tags: ["Design System", "Strategy", "Figma"],
-    outcome: "Unified brand across 8 markets, 60% faster design delivery",
+    outcome: "Unified brand presence, improved design consistency",
     featured: false,
   },
 ];
@@ -130,7 +131,10 @@ export default function WorkPage() {
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
               className="group relative"
             >
-              <div className="p-8 lg:p-10 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/5">
+              <div className="p-8 lg:p-10 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/5 relative overflow-hidden">
+                <div className="absolute top-6 right-6 opacity-40">
+                  <Signal width={64} height={20} color="currentColor" className="text-accent" />
+                </div>
                 <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-4">

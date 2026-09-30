@@ -23,8 +23,8 @@
   --foreground: #F5F7F6;
   --surface: #FFFFFF;
   --elevated: #FFFFFF;
-  --secondary: #F0F4F3;
-  --border: #DCE5E3;
+  --secondary: #E8EEEC;
+  --border: #C8D3D1;
   --accent: #0FAFA5;
   --accent-premium: #B69B62;
   --text-primary: #071A1C;
@@ -32,7 +32,7 @@
   --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-jetbrains: "JetBrains Mono", ui-monospace, monospace;
   --gradient-signature: linear-gradient(135deg, #071A1C 0%, #20D6C7 50%, #D8C39A 100%);
-  --gradient-subtle: linear-gradient(135deg, rgba(20, 214, 199, 0.08) 0%, rgba(214, 195, 154, 0.06) 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(20, 214, 199, 0.10) 0%, rgba(214, 195, 154, 0.08) 100%);
 }
 
 [data-theme="dark"] {

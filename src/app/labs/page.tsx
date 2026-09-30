@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/Section";
-import { AnimatedSignal } from "@/components/Signal";
+import { AnimatedSignal, Signal } from "@/components/Signal";
 
 const researchAreas = [
   {
@@ -148,9 +148,12 @@ export default function LabsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.7, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="group p-8 lg:p-10 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/5"
-                >
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                   className="group p-8 lg:p-10 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/5 relative overflow-hidden"
+                 >
+                   <div className="absolute top-6 right-6 opacity-40">
+                     <Signal width={64} height={20} color="currentColor" className="text-accent" />
+                   </div>
+                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="px-2.5 py-1 text-xs font-mono text-accent bg-accent/10 rounded-full border border-accent/20">
