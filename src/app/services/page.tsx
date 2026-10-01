@@ -105,57 +105,111 @@ export default function ServicesPage() {
               real problems
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed max-w-2xl">
-              Five core disciplines, one engineering-first approach. Each service is a
-              deep capability, not a packaged solution.
+              ELYVORAQ&rsquo;s core services are delivered directly by our engineering
+              team. Partner services are available through established technology
+              partnerships, delivered to the same professional standard.
             </p>
           </div>
         </Section>
 
-        <div className="space-y-6">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-              className="group relative p-8 lg:p-10 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/5"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-                <div className="lg:col-span-4">
-                  <span className="text-[10px] font-mono text-text-secondary tracking-[0.2em] uppercase block mb-3">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h2 className="text-2xl lg:text-3xl font-semibold text-text-primary mb-4 group-hover:text-accent transition-colors duration-300">
-                    {service.title}
-                  </h2>
-                  <p className="text-base text-text-secondary leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  <Link
-                    href={service.href}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-accent group-hover:gap-3 transition-all duration-300"
-                  >
-                    Explore service
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-                <div className="lg:col-span-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border rounded-xl overflow-hidden">
-                    {service.capabilities.map((cap) => (
-                      <div
-                        key={cap}
-                        className="p-4 bg-surface text-sm text-text-secondary hover:text-text-primary hover:bg-secondary transition-colors duration-300"
+        <section className="mb-24">
+          <Section>
+            <div className="mb-12">
+              <span className="text-[10px] font-mono text-accent tracking-[0.2em] uppercase block mb-3">
+                ELYVORAQ CORE
+              </span>
+              <p className="text-sm text-text-secondary max-w-2xl">
+                Services directly positioned under ELYVORAQ, delivered by our engineering
+                team with full accountability for quality, timeline, and outcome.
+              </p>
+            </div>
+            <div className="space-y-6">
+              {services.map((service, i) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="group relative p-8 lg:p-10 bg-surface rounded-2xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/5"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div className="lg:col-span-4">
+                      <span className="text-[10px] font-mono text-text-secondary tracking-[0.2em] uppercase block mb-3">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h2 className="text-2xl lg:text-3xl font-semibold text-text-primary mb-4 group-hover:text-accent transition-colors duration-300">
+                        {service.title}
+                      </h2>
+                      <p className="text-base text-text-secondary leading-relaxed mb-6">
+                        {service.description}
+                      </p>
+                      <Link
+                        href={service.href}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-accent group-hover:gap-3 transition-all duration-300"
                       >
-                        {cap}
+                        Explore service
+                        <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                    <div className="lg:col-span-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border rounded-xl overflow-hidden">
+                        {service.capabilities.map((cap) => (
+                          <div
+                            key={cap}
+                            className="p-4 bg-surface text-sm text-text-secondary hover:text-text-primary hover:bg-secondary transition-colors duration-300"
+                          >
+                            {cap}
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </Section>
+        </section>
+
+        <section className="border-t border-border">
+          <Section>
+            <div className="py-16">
+              <div className="mb-12">
+                <span className="text-[10px] font-mono text-text-secondary tracking-[0.2em] uppercase block mb-3">
+                  PARTNER NETWORK
+                </span>
+                <p className="text-sm text-text-secondary max-w-2xl">
+                  Additional services available through established technology partnerships.
+                  These services maintain ELYVORAQ&rsquo;s professional standards while
+                  expanding the portfolio available to Ethiopian businesses.
+                </p>
+              </div>
+              <div className="p-8 lg:p-10 bg-surface rounded-2xl border border-border">
+                <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
+                  <div>
+                    <h3 className="text-2xl font-semibold text-text-primary mb-2">
+                      TATATECH Services in Ethiopia
+                    </h3>
+                    <p className="text-base text-text-secondary leading-relaxed max-w-2xl">
+                      Through our service-provider relationship with TATATECH Technology LLC,
+                      ELYVORAQ can support Ethiopian businesses with an expanded portfolio of
+                      digital and technology services.
+                    </p>
                   </div>
                 </div>
+                <div className="flex flex-wrap items-center gap-4">
+                  <Button href="/services/tatatech" variant="secondary" size="md">
+                    View TATATECH Services
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                  <Button href="/partnerships" variant="ghost" size="md">
+                    About the Partnership
+                  </Button>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </Section>
+        </section>
 
         <Section className="mt-20 text-center">
           <div className="max-w-2xl mx-auto">
@@ -175,3 +229,4 @@ export default function ServicesPage() {
     </div>
   );
 }
+

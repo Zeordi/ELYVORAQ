@@ -6,6 +6,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
 import { Signal, AnimatedSignal } from "@/components/Signal";
+import { PartnershipBadge } from "@/components/PartnershipBadge";
 
 const services = [
   {
@@ -179,6 +180,14 @@ export default function HomePage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 Elyvoraq Technologies
               </span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+              className="mb-6"
+            >
+              <PartnershipBadge size="sm" />
             </motion.div>
 
             <motion.h1
@@ -409,6 +418,91 @@ export default function HomePage() {
                 View All Work
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
+            </div>
+          </Section>
+        </div>
+      </section>
+
+      <section className="border-t border-border relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-surface to-background" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(32,214,199,0.04),transparent_60%)]" aria-hidden="true" />
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 lg:py-32 relative z-10">
+          <Section>
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-4 block">
+                Technology Without Borders
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-text-primary mb-6">
+                Local expertise.
+                <br />
+                Expanded capability.
+              </h2>
+              <p className="text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
+                Through our service-provider relationship with TATATECH Technology LLC,
+                ELYVORAQ connects businesses in Ethiopia with a broader range of digital,
+                software and technology services while maintaining a local understanding of
+                the market.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/services/tatatech" variant="secondary" size="lg">
+                Explore Partnership Services
+              </Button>
+              <Button href="/partnerships" variant="ghost" size="lg">
+                About the Partnership
+              </Button>
+            </div>
+          </Section>
+        </div>
+      </section>
+
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 lg:py-32">
+          <Section>
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-4 block">
+                Built in Ethiopia
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-text-primary mb-6">
+                Built in Ethiopia.
+                <br />
+                Designed for everywhere.
+              </h2>
+              <p className="text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
+                ELYVORAQ is building from Ethiopia with a global outlook — combining local
+                understanding, engineering capability and international collaboration.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-8 bg-surface rounded-2xl border border-border">
+                <div className="text-[10px] font-mono text-accent tracking-[0.2em] uppercase mb-4">
+                  Local Roots
+                </div>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Founded and operated from Ethiopia, with deep understanding of the local
+                  market, culture, and business environment.
+                </p>
+              </div>
+              <div className="p-8 bg-surface rounded-2xl border border-border">
+                <div className="text-[10px] font-mono text-accent tracking-[0.2em] uppercase mb-4">
+                  Global Standards
+                </div>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Engineering discipline and delivery standards aligned with international
+                  technology companies.
+                </p>
+              </div>
+              <div className="p-8 bg-surface rounded-2xl border border-border">
+                <div className="text-[10px] font-mono text-accent tracking-[0.2em] uppercase mb-4">
+                  International Reach
+                </div>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Serving local Ethiopian clients while collaborating with international
+                  partners and clients.
+                </p>
+              </div>
             </div>
           </Section>
         </div>

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | ELYVORAQ",
   },
   description:
-    "Elyvoraq Technologies is a software engineering and digital innovation company. We design, build, and scale intelligent digital products for serious businesses.",
+    "ELYVORAQ is an Ethiopia-based software engineering and digital innovation company building software, digital products, AI solutions and digital experiences for businesses and organizations locally and internationally.",
   keywords: [
     "Elyvoraq",
     "ELYVORAQ",
@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     "digital products",
     "web experience",
     "brand and creative",
+    "Ethiopia",
+    "Addis Ababa",
+    "software company Ethiopia",
   ],
   authors: [{ name: "Elyvoraq Technologies" }],
   creator: "Elyvoraq Technologies",
@@ -47,13 +50,13 @@ export const metadata: Metadata = {
     siteName: "ELYVORAQ",
     title: "ELYVORAQ — Engineering Digital Possibilities",
     description:
-      "Software Engineering, AI & Data, Digital Products, Web & Digital Experience, Brand & Creative.",
+      "Ethiopia-based software engineering and digital innovation company building software, digital products, AI solutions and digital experiences for businesses and organizations locally and internationally.",
   },
   twitter: {
     card: "summary_large_image",
     title: "ELYVORAQ — Engineering Digital Possibilities",
     description:
-      "Elyvoraq Technologies is a software engineering and digital innovation company.",
+      "Elyvoraq Technologies is a software engineering and digital innovation company based in Ethiopia.",
   },
 };
 
