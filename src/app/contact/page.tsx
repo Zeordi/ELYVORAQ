@@ -103,15 +103,49 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-text-primary mb-1">Phone</div>
+                    <a
+                      href="tel:+251911234567"
+                      className="text-sm text-text-secondary hover:text-accent transition-colors duration-300"
+                    >
+                      +251 911 234 567
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                       <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <circle cx="12" cy="11" r="1.5" fill="currentColor" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-text-primary mb-1">Location</div>
+                    <div className="text-sm font-medium text-text-primary mb-1">Presence</div>
                     <p className="text-sm text-text-secondary">
-                      Based in Ethiopia. Serving local and international clients.
+                      Currently operating remotely from Ethiopia and available for local and
+                      international engagements.
                     </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+                      <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-text-primary mb-1">LinkedIn</div>
+                    <a
+                      href="https://linkedin.com"
+                      className="text-sm text-text-secondary hover:text-accent transition-colors duration-300"
+                    >
+                      linkedin.com/company/elyvoraq
+                    </a>
                   </div>
                 </div>
               </div>
